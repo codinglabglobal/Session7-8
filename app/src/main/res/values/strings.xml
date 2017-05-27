@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Firebase example</string>
+    <string name="app_name">Eunoia Cafe</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -15,4 +15,10 @@
         completions."
     </string>
     <string name="title_activity_login_contact">Sign in</string>
+    <string name="title_activity_main">Welcome!</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

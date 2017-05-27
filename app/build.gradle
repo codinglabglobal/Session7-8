@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.example.firebase_project"
+        applicationId "com.example.cafe_project"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
@@ -43,6 +43,7 @@ dependencies {
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
 
 
