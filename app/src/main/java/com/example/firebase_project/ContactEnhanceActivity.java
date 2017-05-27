@@ -20,6 +20,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.google.firebase.database.ValueEventListener;
 import android.util.Log;
 import android.support.v7.widget.DividerItemDecoration;
+import android.widget.Toast;
 
 
 public class ContactEnhanceActivity extends AppCompatActivity {
@@ -48,35 +49,45 @@ public class ContactEnhanceActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 contactsArrayList.clear();
-                for (DataSnapshot ds : dataSnapshot.getChildren() ){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Contacts contact = ds.getValue(Contacts.class);
                     contactsArrayList.add(contact);
                 }
                 adapter.notifyDataSetChanged();
-                Log.d("onDataChange$$$$",Integer.toString(contactsArrayList.size()));
+                Log.d("onDataChange$$$$", Integer.toString(contactsArrayList.size()));
             }
 
             @Override
-            public void onCancelled (DatabaseError dberror){
+            public void onCancelled(DatabaseError dberror) {
 
-             }
+            }
 
         });
 
         adapter.notifyDataSetChanged();
 
+        //additional add - delete function
         final EditText name = (EditText) findViewById(R.id.addcontact);
-        final EditText address = (EditText) findViewById(R.id.addemail);
+        final EditText address = (EditText) findViewById(R.id.addaddress);
+        final EditText hobby = (EditText) findViewById(R.id.addhobby);
         final Button button = (Button) findViewById(R.id.addButton);
+        final Button delButton = (Button) findViewById(R.id.delButton);
+        final Button updButton = (Button) findViewById(R.id.updButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                DatabaseReference mRef2 =  reference_contacts.push();
+                if (name.getText().toString().equals("")){
+                    Toast.makeText(ContactEnhanceActivity.this, "You cannot enter empty name", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
-                Contacts new_name = new Contacts(name.getText().toString(),address.getText().toString(), "N/A" );
+                DatabaseReference mRef2 = reference_contacts.push();
+                Contacts new_name = new Contacts(name.getText().toString(),
+                        address.getText().toString(),
+                        hobby.getText().toString());
                 mRef2.setValue(new_name);
-                Log.d("the new name$$",name.getText().toString());
+                Log.d("the new name$$", name.getText().toString());
 
                 name.setText("");
                 address.setText("");
@@ -84,8 +95,20 @@ public class ContactEnhanceActivity extends AppCompatActivity {
             }
         });
 
+        delButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                reference_contacts.child("4").setValue(null);
+            }
 
+        });
 
+        updButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                reference_contacts.child("1").child("name").setValue("Update by function");
+                adapter.notifyDataSetChanged();
+            }
+
+        });
     }
 
     class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.ViewHolder> {
@@ -122,12 +145,15 @@ public class ContactEnhanceActivity extends AppCompatActivity {
             final TextView textViewAddress;
             final TextView textViewHobby;
 
+            //display all the required fields
             public ViewHolder(View itemView) {
                 super(itemView);
                 textViewName = (TextView) itemView.findViewById(R.id.name);
                 textViewAddress = (TextView) itemView.findViewById(R.id.address);
                 textViewHobby = (TextView) itemView.findViewById(R.id.hobby);
             }
+
+            //base on the view holder items, set the values
 
             public void setValues(Contacts contact) {
                 textViewName.setText(contact.getName());

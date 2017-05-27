@@ -43,16 +43,38 @@
             android:hint="Name"/>
 
         <EditText
-            android:id="@+id/addemail"
+            android:id="@+id/addaddress"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="address"/>
+
+        <EditText
+            android:id="@+id/addhobby"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="hobby"/>
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Add New Item"/>
+
+
+        <Button
+            android:id="@+id/delButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Delete Item 4"/>
+
+        <Button
+            android:id="@+id/updButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Update Item 1"/>
     </LinearLayout>
 
 </LinearLayout>

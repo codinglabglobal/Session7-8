@@ -2,27 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="50sp"  ><!-- remember the height value if too high then only show 1st line -->
 
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="100sp"
+        android:layout_width="130sp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="TextView"
-
+        android:background="#EBF5FB"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/address"
-        android:layout_width="160sp"
+        android:layout_width="130sp"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="20sp"
+        android:background="#AED6F1"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/name"
         android:layout_toEndOf="@+id/name"
@@ -30,10 +31,11 @@
 
     <TextView
         android:id="@+id/hobby"
-        android:layout_width="180sp"
+        android:layout_width="130sp"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="20sp"
+        android:background="#EBF5FB"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/address"
         android:layout_toEndOf="@+id/address"
